@@ -18,6 +18,8 @@ import Help from "./pages/Help/Help";
 import { SubscriptionProvider } from "./contexts/SubscriptionContext";
 import ReactPixel from "react-facebook-pixel";
 import { hashString } from "./utils/hashString";
+import FileTable from "./pages/FileTable/FileTable";
+import Chat from "./pages/Chat/Chat";
 
 function AppRoutes() {
   const { user, authIsReady } = useAuthContext();
@@ -76,7 +78,9 @@ function AppRoutes() {
                       }
                     />
                     <Route path="/help" element={<Help />} />
-                    <Route path="*" element={<Home />} />
+                    <Route path="/inserir" element={<Home />} />
+                    <Route path="/chat" element={<Chat />} />
+                    <Route path="/arquivos" element={<FileTable />} />
                   </Routes>
                 </div>
               </SubscriptionProvider>

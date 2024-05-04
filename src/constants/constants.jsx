@@ -1,35 +1,26 @@
 import {
-  DashboardIcon,
-  HomeIcon,
+  ChatBubbleIcon,
+  FileIcon,
   LinkBreak2Icon,
   MagicWandIcon,
+  PlusCircledIcon,
   RocketIcon,
 } from "@radix-ui/react-icons";
 
 export const routeOptions = [
   {
-    route: "/opt1",
-    name: "Opção 1",
-    icon: <HomeIcon />,
+    route: "/inserir",
+    name: "Inserir arquivo",
+    icon: <PlusCircledIcon />,
   },
   {
-    route: "/opt2",
-    name: "Opção 2",
-    icon: <DashboardIcon />,
+    route: "/chat",
+    name: "Chat",
+    icon: <ChatBubbleIcon />,
   },
   {
-    route: "/opt3",
-    name: "Opção 3",
-    icon: <MagicWandIcon />,
-  },
-  {
-    route: "/opt4",
-    name: "Opção 4",
-    icon: <LinkBreak2Icon />,
-  },
-  {
-    route: "/opt5",
-    name: "Opção 5",
-    icon: <RocketIcon />,
+    route: "/arquivos",
+    name: "Meus arquivos",
+    icon: <FileIcon />,
   },
 ];

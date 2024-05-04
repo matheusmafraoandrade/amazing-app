@@ -4,7 +4,15 @@ import { getStorage } from "firebase/storage";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
-// TODO: Colocar o firebaseConfig do seu app aqui abaixo
+// DONE: Colocar o firebaseConfig do seu app aqui abaixo
+const firebaseConfig = {
+  apiKey: "AIzaSyA6CwJBugO4ZI6x5J360L8LG4tbJZQBkyY",
+  authDomain: "pdf-chatter-bdadd.firebaseapp.com",
+  projectId: "pdf-chatter-bdadd",
+  storageBucket: "pdf-chatter-bdadd.appspot.com",
+  messagingSenderId: "840100177931",
+  appId: "1:840100177931:web:5b121fd8ba34a695867f0e",
+};
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);

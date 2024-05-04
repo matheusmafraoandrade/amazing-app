@@ -1,0 +1,68 @@
+##### Chat PDF app #####
+
+### Como construir LLMs
+
+* Devo fazer as LLMs mais inteligentes. 2 formas:
+
+1. Fine tuning: treinar em um conjunto de dados específico para mudar o comportamento do LLM.
+    Exemplo: AI doctor
+
+2. Knowledge store: usar dados externos como fonte de informação antes de enviar a pergunta -> Vamos usar
+    Exemplo: Busca em documentos
+
+* Langchain: conjunto de APIs de LLMs (openai embedding)
+* Vercel AI: Hooks e APIs que simplificam integração com Langchain
+* Pinecone: vector DB para armazenar embeddings
+    Embedding: Representação matemática de textos, armazenadas com base no significado semântico
+
+### Arquitetura
+
+* Duas partes:
+
+1. Construção do knowledge store:
+    - Dividir PDF em chunks
+    - LLM: chunks como input, embeddings como output
+    - Armazenar embeddings no vector db
+2. Interação com o usuário:
+    - Converter pergunta em um padrão baseado no histórico do chat
+    - LLM: pergunta padrão como input, embedding como output
+    - Busca os 5 embeddings mais parecidos no vector db
+    - Passa os resultados como contexto para o LLM formular a resposta
+        - Responde "não sei" se a resposta não for encontrada no contexto
+
+### Passo a Passo
+
+1. Desenvolver UI em next.js (adaptar para React)
+2. Construir componentes de UI
+    - Balões de chat AI e user
+    - Campo de texto
+    - 2 opções de resposta
+3. Configurar openai e Pinecone
+    - Pinecone index: unidade de organização do DB Pinecone, ou seja, como o DB organiza os dados
+        - O ideal (mais rápido) é criar via console Pinecone (ao invés de código)
+    - TODO: Criar novo index com o nome oficial e alterar no .env
+4. Configurar knowledge store
+    - npm install zod -> Criar arquivo config.ts
+    - npm install @pinecone-database/pinecone
+    - TODO: adaptar cliente Pinecone para cloud function
+5. Realizar primeira etapa da Arquitetura
+    - TODO: remover link do PDF e pasta docs
+    - npm install langchain
+    - npm install @langchain/openai
+    - pdf-loader vai dividir o PDF em chunks
+    - npm install -D tsx: para executar os scripts
+    - No package.json, adicionar: "prepare:data": "tsx -r dotenv/config ./src/scripts/pinecone-embed-docs.ts"
+        - TODO: ver se é para usar o dotenv mesmo
+    - Criar um index demora, então a primeira execução vai dar erro
+6. Preparar templates e instâncias de LLM para usar no Langchain
+    - Duas instâncias de LLM no arquivo llm.ts:
+        1. Streaming: consumida do lado do cliente
+        2. Non-Streaming
+    - Dois templates:
+        1. Gerar pergunta a partir do histórico -> prompt único que passa o histórico e a nova pergunta como param
+        2. Buscar resposta nos PDFs na knowledge store
+7. Configurar Langchain para fazer o stream das informações
+    - API Langchain: Conversational Retrieval
+8. Preparar endpoint do chat para transformar em conversa
+9. Usar o stream para mostrar os chats
+10. Buscar informação fonte e enviar como parte da stream
