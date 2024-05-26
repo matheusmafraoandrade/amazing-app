@@ -5,7 +5,7 @@ import { Input } from "@/shadcn/components/ui/input";
 import { Card, CardContent } from "@/shadcn/components/ui/card";
 import { Button } from "@/shadcn/components/ui/button";
 
-// TODO: Trocar pela URL da sua Cloud Function
+// DONE: Trocar pela URL da sua Cloud Function
 const url =
   "https://us-central1-pdf-chatter-bdadd.cloudfunctions.net/changePassword";
 

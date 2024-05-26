@@ -40,7 +40,7 @@ function AppRoutes() {
         autoConfig: true,
         debug: false,
       };
-      ReactPixel.init("SEU_PIXEL_ID", advancedMatching, options); // TODO: Substituir "SEU_PIXEL_ID" pelo ID do seu pixel
+      ReactPixel.init("2780962698719127", advancedMatching, options); // DONE: Substituir "SEU_PIXEL_ID" pelo ID do seu pixel
       ReactPixel.pageView();
 
       // Marcar como inicializado para esta sessão

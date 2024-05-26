@@ -102,18 +102,20 @@ export default function Signup() {
         <div>
           <Logo />
           <h2 className="mt-12 sm:mt-10 2xl:mt-16 text-4xl leading-[44px] sm:leading-[50px] font-medium">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Cadastre-se agora e comece a conversar com seus PDFs
           </h2>
-          <p className="mt-4 sm:mt-6 2xl:mt-10 text-muted-foreground">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-            debitis dolore, dicta fugiat iure quia! Hic facilis aut ducimus
-            aliquam blanditiis ex ea. Ipsa omnis quas impedit maiores ad unde?
-          </p>
+          {/* <p className="mt-4 sm:mt-6 2xl:mt-10 text-muted-foreground">
+            Aproveite o poder da inteligência artificial para transformar seus
+            documentos PDF em conversas interativas e dinâmicas. Com MyPDFBot,
+            você pode acessar informações rapidamente, melhorar a produtividade
+            e tornar o aprendizado mais envolvente. Cadastre-se agora e descubra
+            uma maneira inovadora de interagir com seus arquivos PDF!
+          </p> */}
           <div className="bg-foreground text-background p-5 sm:p-8 rounded-xl mt-[8%] leading-6 2xl:leading-8">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
-            quasi molestias molestiae, pariatur, doloribus neque saepe sit hic
-            quis sequi nulla non quidem accusantium harum ipsa minima adipisci
-            iure obcaecati!
+            Aproveite o poder da inteligência artificial para transformar seus
+            documentos PDF em conversas interativas e dinâmicas. Com MyPDFBot,
+            você pode acessar informações rapidamente, melhorar a produtividade
+            e tornar o seu aprendizado mais envolvente.
           </div>
         </div>
       </div>

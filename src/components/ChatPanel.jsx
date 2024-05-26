@@ -1,4 +1,4 @@
-import { ChatBubble } from "./chat-bubble";
+import { ChatBubble } from "../Dump/api/chat/chat-bubble";
 import { Button } from "@/shadcn/components/ui/button";
 import { Input } from "@/shadcn/components/ui/input";
 //import { Message } from "ai/react";

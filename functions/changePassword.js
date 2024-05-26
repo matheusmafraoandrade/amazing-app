@@ -3,6 +3,7 @@ const admin = require("firebase-admin");
 const express = require("express");
 const cors = require("cors");
 
+// DONE: Definir chave de API do projeto
 const FIREBASE_API_KEY = functions.config().project.api_key;
 
 const app = express();
@@ -21,10 +22,10 @@ const corsOptions = {
       "http://localhost:5173",
       "http://127.0.0.1:5173",
       "http://localhost:5174",
-      "https://127.0.0.1:5174",
-      "https://template-90106.web.app",
+      "http://127.0.0.1:5174",
+      "https://pdf-chatter-bdadd.web.app",
       "https://app.seudominio.com.br",
-    ];
+    ]; // TODO: substituir pelo seu domínio
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {

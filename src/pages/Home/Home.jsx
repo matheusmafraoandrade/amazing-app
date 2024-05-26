@@ -1,19 +1,10 @@
-import axios from "axios";
 import React, { useState, useRef } from "react";
 import { useFirestore } from "@/hooks/useFirestore";
 import uploadToStorage from "@/utils/uploadToStorage";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { useUserContext } from "@/hooks/useUserContext";
 import { useToast } from "@/shadcn/components/ui/use-toast";
-
-import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import { OpenAIEmbeddings } from "@langchain/openai";
-import { Pinecone } from "@pinecone-database/pinecone";
-import { Document } from "langchain/document";
-import { PineconeStore } from "@langchain/pinecone";
-
-const pdfUpsertFunctionURL =
-  "https://us-central1-pdf-chatter-bdadd.cloudfunctions.net/pdfUpsert";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 export default function Home() {
   // Estados para os campos do formulário
@@ -22,6 +13,7 @@ export default function Home() {
   const [nomeArquivoOriginal, setNomeArquivoOriginal] = useState("");
   const [nomeArquivo, setNomeArquivo] = useState(nomeArquivoOriginal); // Usa o nome original como valor inicial
   const [categoria, setCategoria] = useState("");
+  const [enviandoArquivo, setEnviandoArquivo] = useState(false); // Estado para controlar o envio do arquivo
 
   // Firebase
   const { addDocument: addFile } = useFirestore("files");
@@ -41,13 +33,12 @@ export default function Home() {
 
   // Função para lidar com a mudança no campo de upload de arquivo
   const handleUploadArquivo = (event) => {
+    event.preventDefault();
     const file = event.target.files[0];
     setArquivo(file);
     setModoSelecao(false);
     setNomeArquivoOriginal(file?.name);
-    setNomeArquivo(file?.name.replace(".pdf", "")); // Atualiza o nome do arquivo no campo de nome
-    // inputRef.current.value = null; // Limpa o valor do input de arquivo
-    console.log(file);
+    setNomeArquivo(file?.name.replace(/.[pP][dD][fF]$/, "")); // Atualiza o nome do arquivo no campo de nome
   };
 
   // Função para lidar com o arraste do arquivo
@@ -57,17 +48,16 @@ export default function Home() {
     setArquivo(file);
     setModoSelecao(false);
     setNomeArquivoOriginal(file.name);
-    setNomeArquivo(file.name.replace(".pdf", ""));
-    // inputRef.current.value = null; // Limpa o valor do input de arquivo
+    setNomeArquivo(file.name.replace(/\.[pP][dD][fF]$/, ""));
   };
 
   // Função para lidar com a exclusão do arquivo
   const handleExcluirArquivo = () => {
+    inputRef.current.value = null; // Limpa também o valor do input de arquivo -> Me permite o upload do mesmo arquivo novamente
     setArquivo(null);
     setModoSelecao(true);
     setNomeArquivoOriginal("");
     setNomeArquivo("");
-    // inputRef.current.value = null; // Limpa também o valor do input de arquivo
   };
 
   // Função para lidar com a mudança no campo de seleção de categoria
@@ -88,6 +78,8 @@ export default function Home() {
     console.log("Categoria:", categoria);
     if (!arquivo || !nomeArquivo || !categoria) return;
 
+    setEnviandoArquivo(true);
+
     const downloadUrl = await uploadToStorage(
       arquivo,
       `users/${user.uid}/pdfFiles`,
@@ -101,24 +93,12 @@ export default function Home() {
       lastUpdated: Date.now(),
     });
 
-    let formData = new FormData();
-    formData.append("files", arquivo);
-    formData.append("returnSourceDocuments", true);
-    formData.append("pineconeNamespace", user.uid);
-    formData.append("metadata", JSON.stringify({ docName: nomeArquivo }));
-
-    // try {
-    //   await axios.post(pdfUpsertFunctionURL, {
-    //     formData: formData,
-    //   });
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
-
     toast({
       title: "PDF adicionado",
       description: `Arquivo "${nomeArquivo}" adicionado com sucesso.`,
     });
+    inputRef.current.value = null;
+    setEnviandoArquivo(false);
     setArquivo(null);
     setModoSelecao(true);
     setNomeArquivoOriginal("");
@@ -211,13 +191,17 @@ export default function Home() {
             <option value="Pedidos">Pedidos</option>
           </select>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center items-center">
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600"
+            className="flex items-center bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600"
             onClick={createFile}
+            disabled={enviandoArquivo} // Desabilita o botão enquanto o arquivo está sendo enviado
           >
             Enviar
+            {enviandoArquivo && (
+              <ReloadIcon className="animate-spin ml-3" />
+            )}{" "}
           </button>
         </div>
       </form>

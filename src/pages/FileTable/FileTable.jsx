@@ -33,11 +33,6 @@ export default function FileTable() {
 
   return (
     <div className="shadow-md rounded-lg overflow-hidden p-8 max-w-4xl ml-20 mr-16 mt-20">
-      {/* <div>
-        {pdfFiles?.map((pdfFile) => (
-          <div key={pdfFile.id}>{pdfFile.name}</div>
-        ))}
-      </div> */}
       <div className="flex justify-between items-center mb-4">
         <h2 className="font-medium text-lg pb-12">Meus arquivos</h2>
         <div className="flex items-center">

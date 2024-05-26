@@ -38,18 +38,17 @@ export default function Login() {
         <div>
           <Logo />
           <h2 className="mt-12 sm:mt-10 2xl:mt-16 text-4xl leading-[44px] sm:leading-[50px] font-medium">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Bem-vindo de volta!
           </h2>
-          <p className="mt-4 sm:mt-6 2xl:mt-10 text-muted-foreground">
+          {/* <p className="mt-4 sm:mt-6 2xl:mt-10 text-muted-foreground">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
             debitis dolore, dicta fugiat iure quia! Hic facilis aut ducimus
             aliquam blanditiis ex ea. Ipsa omnis quas impedit maiores ad unde?
-          </p>
+          </p> */}
           <div className="bg-foreground text-background p-5 sm:p-8 rounded-xl mt-[8%] leading-6 2xl:leading-8">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
-            quasi molestias molestiae, pariatur, doloribus neque saepe sit hic
-            quis sequi nulla non quidem accusantium harum ipsa minima adipisci
-            iure obcaecati!
+            Faça login para transformar seus PDFs em conversas inteligentes e
+            aproveitar ao máximo a eficiência do MyPDFBot. Continue a explorar,
+            aprender e interagir de maneira inovadora com seus documentos.
           </div>
         </div>
       </div>
