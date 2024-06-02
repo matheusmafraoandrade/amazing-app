@@ -46,20 +46,20 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex flex-col h-screen p-16">
+    <div className="flex flex-col h-screen py-16 px-24 border border-border">
       <div className="overflow-y-auto flex flex-col-reverse flex-grow">
         {messages &&
           messages
             .sort((a, b) => b.createdAt - a.createdAt)
             .map((message, index) => (
               <div key={index} className="mb-2">
-                <div className="mb-2 text-right">
+                <div className="mb-2 mr-2 text-right">
                   <span className="bg-teal-800 text-white rounded-lg py-2 px-4 inline-block">
                     {message?.question}
                   </span>
                 </div>
-                <div className="mb-2">
-                  <span className="bg-gray-100 text-gray-900 rounded-lg py-2 px-4 inline-block">
+                <div className="mb-2 ml-2">
+                  <span className="bg-primary-foreground text-primary rounded-lg py-2 px-4 inline-block">
                     {message?.answer}
                   </span>
                 </div>
@@ -72,7 +72,7 @@ export default function Chat() {
           value={prompt}
           placeholder="Mensagem..."
           onChange={(e) => setPrompt(e.target.value)}
-          className="flex-1 p-2 rounded-l-lg border"
+          className="flex-1 p-2 rounded-l-lg border bg-primary-foreground"
         />
         <button
           disabled={loading || prompt.length === 0}

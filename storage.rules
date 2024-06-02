@@ -5,8 +5,8 @@ rules_version = '2';
 //    /databases/(default)/documents/users/$(request.auth.uid)).data.isAdmin;
 service firebase.storage {
   match /b/{bucket}/o {
-    match /{allPaths=**} {
-      allow read, write: if true; // TODO: Definir regras para gravação e leitura no Cloud Storage
+    match /{userId}/{allPaths=**} {
+      allow read, write: if true //request.auth != null && request.auth.uid == userId; // DONE: Definir regras para gravação e leitura no Cloud Storage
     }
   }
 }

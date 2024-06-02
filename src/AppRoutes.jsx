@@ -79,6 +79,7 @@ function AppRoutes() {
                     />
                     <Route path="/help" element={<Help />} />
                     <Route path="/inserir" element={<Home />} />
+                    <Route path="/login" element={<Home />} />
                     <Route path="/chat" element={<Chat />} />
                     <Route path="/arquivos" element={<FileTable />} />
                   </Routes>

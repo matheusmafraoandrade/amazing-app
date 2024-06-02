@@ -170,7 +170,7 @@ export default function Home() {
           <input
             type="text"
             id="nome-arquivo"
-            className="border border-gray-300 rounded p-2 w-3/5 ml-auto"
+            className="border border-gray-300 rounded p-2 w-3/5 ml-auto bg-primary-foreground"
             value={nomeArquivo}
             onChange={handleNomeArquivoChange}
           />
@@ -181,7 +181,7 @@ export default function Home() {
           </label>
           <select
             id="categoria"
-            className="border border-gray-300 rounded p-2 w-3/5 ml-auto"
+            className="border border-gray-300 rounded p-2 w-3/5 ml-auto bg-primary-foreground"
             value={categoria}
             onChange={handleCategoriaChange}
           >
@@ -194,7 +194,7 @@ export default function Home() {
         <div className="flex justify-center items-center">
           <button
             type="submit"
-            className="flex items-center bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600"
+            className="flex items-center bg-teal-800 text-white py-2 px-6 rounded hover:bg-teal-700"
             onClick={createFile}
             disabled={enviandoArquivo} // Desabilita o botão enquanto o arquivo está sendo enviado
           >

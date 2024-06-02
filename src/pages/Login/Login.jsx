@@ -45,7 +45,7 @@ export default function Login() {
             debitis dolore, dicta fugiat iure quia! Hic facilis aut ducimus
             aliquam blanditiis ex ea. Ipsa omnis quas impedit maiores ad unde?
           </p> */}
-          <div className="bg-foreground text-background p-5 sm:p-8 rounded-xl mt-[8%] leading-6 2xl:leading-8">
+          <div className="bg-teal-900 text-background p-5 sm:p-8 rounded-xl mt-[8%] leading-6 2xl:leading-8">
             Faça login para transformar seus PDFs em conversas inteligentes e
             aproveitar ao máximo a eficiência do MyPDFBot. Continue a explorar,
             aprender e interagir de maneira inovadora com seus documentos.
@@ -102,7 +102,7 @@ export default function Login() {
             </p>
             <Button
               size="xl"
-              className="mt-6 text-lg w-full"
+              className="mt-6 text-lg w-full bg-teal-900"
               disabled={isPending}
             >
               {isPending && isEmailLogin && (

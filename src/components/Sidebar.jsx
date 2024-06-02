@@ -1,5 +1,10 @@
 import { Button } from "@/shadcn/components/ui/button";
-import { InfoCircledIcon, PersonIcon, ExitIcon } from "@radix-ui/react-icons";
+import {
+  QuestionMarkCircledIcon,
+  InfoCircledIcon,
+  PersonIcon,
+  ExitIcon,
+} from "@radix-ui/react-icons";
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "@/hooks/useLogout";
 import Logo from "./Logo";
@@ -46,9 +51,10 @@ export default function Sidebar({ rerender, setRerender }) {
 
             <div>
               <p className="font-medium">{user.displayName}</p>
-              <p className="text-muted-foreground/75 text-sm">
+              {/* TODO: implementar lógica do plano do usuário */}
+              {/* <p className="text-muted-foreground/75 text-sm">
                 Premium account
-              </p>
+              </p> */}
             </div>
           </div>
           <div
@@ -98,8 +104,8 @@ export default function Sidebar({ rerender, setRerender }) {
                 activeRoute === 3.14 ? "bg-primary/10 font-medium" : ""
               }`}
             >
-              <InfoCircledIcon className="w-4 h-4 mr-2" />
-              Central de Ajuda
+              <QuestionMarkCircledIcon className="w-4 h-4 mr-2" />
+              Dúvidas e sugestões
             </Button>
             <Button
               size="noPadding"

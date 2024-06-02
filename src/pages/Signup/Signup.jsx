@@ -111,7 +111,7 @@ export default function Signup() {
             e tornar o aprendizado mais envolvente. Cadastre-se agora e descubra
             uma maneira inovadora de interagir com seus arquivos PDF!
           </p> */}
-          <div className="bg-foreground text-background p-5 sm:p-8 rounded-xl mt-[8%] leading-6 2xl:leading-8">
+          <div className="bg-teal-900 text-background p-5 sm:p-8 rounded-xl mt-[8%] leading-6 2xl:leading-8">
             Aproveite o poder da inteligência artificial para transformar seus
             documentos PDF em conversas interativas e dinâmicas. Com MyPDFBot,
             você pode acessar informações rapidamente, melhorar a produtividade
@@ -208,7 +208,7 @@ export default function Signup() {
             <Button
               disabled={isPending || googleIsPending}
               size="xl"
-              className="mt-6 text-lg w-full"
+              className="mt-6 text-lg w-full bg-teal-900"
             >
               {isPending && (
                 <ReloadIcon className="w-5 h-5 mr-2 animate-spin" />
